@@ -74,6 +74,9 @@ function UXcustomizeViaCountry(){
     switch (global_prf_country) {
       case 'EN_AU':
       case 'en-AU':
+      case 'AU':
+      case 'SG':
+      case 'MY':
         UX_for_AU[i].style.display = 'block';
         break;
       default:
