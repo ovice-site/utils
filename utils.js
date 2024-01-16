@@ -88,6 +88,7 @@ function UXcustomizeViaCountry(){
     switch (global_prf_country) {
       case 'EN':
       case 'en':
+      case 'US':
         UX_for_EN[i].style.display = 'block';
         break;
       default:
