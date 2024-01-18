@@ -1,5 +1,5 @@
 // by Tok@ovice, 2024
-var global_prm;
+var global_prm = "";
 var global_prm_val;
 var global_prf_country = "en";
 var global_btn_position = "";
@@ -99,7 +99,7 @@ function UXcustomizeViaCountry(){
 
 (function(){
   var str = retrieveGETqs();
-  global_prm = decodeURIComponent(str);
+  global_prm = str ? decodeURIComponent(str) : "";
   global_prm_val = new URLSearchParams(global_prm);
 
   if(!window.location.pathname.startsWith("/ja") && !window.location.pathname.startsWith("/ko")) {
@@ -111,18 +111,17 @@ function UXcustomizeViaCountry(){
       getUserLangByGLwithUX();
     }
   }
-
 })();
 
 $(function(){
     $('a').click(function() {
     var target_url = $(this).attr("href");
-
     if (global_prm) {
       if (global_btn_position) {
         var p = window.location.pathname;
         var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
-        global_prm = global_prm + '&lp_type=official_' c + '_' + window.location.pathname + '_' + global_btn_position;
+        global_prm = global_prm + '&lp_type=' + c + '_official_' +
+ window.location.pathname.substring(1) + '_' + global_btn_position;
       }
       if (target_url.indexOf('?') != -1) {
         $('a').attr('href', target_url + '&' + global_prm);
