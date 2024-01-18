@@ -120,7 +120,9 @@ $(function(){
 
     if (global_prm) {
       if (global_btn_position) {
-        global_prm = global_prm + '&lp_type=official_' + window.location.pathname + '_' + global_btn_position;
+        var p = window.location.pathname;
+        var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
+        global_prm = global_prm + '&lp_type=official_' c + '_' + window.location.pathname + '_' + global_btn_position;
       }
       if (target_url.indexOf('?') != -1) {
         $('a').attr('href', target_url + '&' + global_prm);
