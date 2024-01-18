@@ -119,7 +119,7 @@ $(function(){
 
     if (global_prm) {
       if (global_btn_position) {
-        target_url = target_url + '&lp_type=' + global_btn_position;
+        global_prm = global_prm + '&lp_type=official_' + window.location.pathname + '_' + global_btn_position;
       }
       if (target_url.indexOf('?') != -1) {
         $('a').attr('href', target_url + '&' + global_prm);
