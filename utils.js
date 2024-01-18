@@ -6,6 +6,7 @@ var global_btn_position = "";
 const className_UX_for_AU = "ux_for_au";
 const className_UX_for_EN = "ux_for_en";
 const className_trial_button = "ux_trial";
+const className_freeplan_button = "ux_freeplan";
 
 function retrieveGETqs() {
 	var query = window.location.search.substring(1);
@@ -132,5 +133,7 @@ $(function(){
 
 $('.' + className_trial_button).click(function(e) {
   global_btn_position = e.currentTarget.dataset['position'];
-  console.log(global_btn_position);
+});
+$('.' + className_freeplan_button).click(function(e) {
+  global_btn_position = e.currentTarget.dataset['position'];
 });
