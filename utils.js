@@ -120,8 +120,7 @@ $(function(){
       if (global_btn_position) {
         var p = window.location.pathname;
         var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
-        global_prm = global_prm + '&lp_type=' + c + '_official_' +
- window.location.pathname.substring(1) + '_' + global_btn_position;
+        global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
       }
       if (target_url.indexOf('?') != -1) {
         $('a').attr('href', target_url + '&' + global_prm);
