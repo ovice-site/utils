@@ -77,7 +77,7 @@ function UXcustomizeViaCountry(){
       case 'AU':
       case 'SG':
       case 'MY':
-        UX_for_AU[i].style.display = 'block';
+        UX_for_AU[i].style.display = 'inline';
         break;
       default:
         UX_for_AU[i].style.display = 'none';
@@ -89,7 +89,7 @@ function UXcustomizeViaCountry(){
       case 'EN':
       case 'en':
       case 'US':
-        UX_for_EN[i].style.display = 'block';
+        UX_for_EN[i].style.display = 'inline';
         break;
       default:
         UX_for_EN[i].style.display = 'none';
