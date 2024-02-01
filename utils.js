@@ -1,4 +1,4 @@
-// ovice utils build 008 by Tok@ovice, 2024 
+// ovice utils build 011 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'en';
@@ -128,7 +128,7 @@ function UXcustomizeViaCountry(){
     if(typeof localStorage !== 'undefined') {
       var s = localStorage;
       if (s.getItem('ovicecom_countrycode')) {
-        global_prf_country = s.getItem('ovicecom_country');
+        global_prf_country = s.getItem('ovicecom_countrycode');
         global_flg_c = global_flg_ctype.LS;
       } else {
         global_flg_c = global_flg_ctype.GL;
@@ -161,23 +161,25 @@ $(function(){
 $(function(){
   $('a').click(function() {
     var target_url = $(this).attr('href');
-    if (global_flg_c == global_flg_ctype.GL || global_flg_c == global_flg_ctype.LS) {
+    if (!target_url.startsWith('#')) {
+      if (global_flg_c == global_flg_ctype.GL || global_flg_c == global_flg_ctype.LS) {
+        if (global_prm) {
+          global_prm = global_prm + '&countrycode=' + global_prf_country;
+        } else {
+          global_prm = 'countrycode=' + global_prf_country;
+        }
+      }
       if (global_prm) {
-        global_prm = global_prm + '&countrycode=' + global_prf_country;
-      } else {
-        global_prm = 'countrycode=' + global_prf_country;
-      }
-    }
-    if (global_prm) {
-      if (global_btn_position) {
-        var p = window.location.pathname;
-        var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
-        global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
-      }
-      if (target_url.indexOf('?') != -1) {
-        $('a').attr('href', target_url + '&' + global_prm);
-      } else {
-        $('a').attr('href', target_url + '?' + global_prm);
+        if (global_btn_position) {
+          var p = window.location.pathname;
+          var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
+          global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
+        }
+        if (target_url.indexOf('?') != -1) {
+          $('a').attr('href', target_url + '&' + global_prm);
+        } else {
+          $('a').attr('href', target_url + '?' + global_prm);
+        }
       }
     }
   })
