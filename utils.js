@@ -1,4 +1,4 @@
-// ovice utils build 011 by Tok@ovice, 2024 
+// ovice utils build 012 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'en';
@@ -176,9 +176,9 @@ $(function(){
           global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
         }
         if (target_url.indexOf('?') != -1) {
-          $('a').attr('href', target_url + '&' + global_prm);
+          $(this).attr('href', target_url + '&' + global_prm);
         } else {
-          $('a').attr('href', target_url + '?' + global_prm);
+          $(this).attr('href', target_url + '?' + global_prm);
         }
       }
     }
