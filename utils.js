@@ -1,4 +1,4 @@
-// ovice utils build 014 by Tok@ovice, 2024 
+// ovice utils build 016 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'en';
@@ -163,7 +163,7 @@ $(function(){
     var target_url = $(this).attr('href');
     if (!target_url.startsWith('#') && !target_url.startsWith('?') && !target_url.includes('countrycode')) {
       if (global_flg_c == global_flg_ctype.GL || global_flg_c == global_flg_ctype.LS) {
-        if (global_prm) {
+        if (global_prm && !global_prm.includes('countrycode')) {
           global_prm = global_prm + '&countrycode=' + global_prf_country;
         } else {
           global_prm = 'countrycode=' + global_prf_country;
