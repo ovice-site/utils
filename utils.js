@@ -1,10 +1,11 @@
-// ovice utils build 016 by Tok@ovice, 2024 
+// ovice utils build 018 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'en';
 var global_btn_position = '';
 var global_flg_ctype = {none:0,QP:1,LS:2,GL:3,XX:9};
 var global_flg_c = global_flg_ctype.none;
+const className_UX_for_APAC = 'ux_for_apac';
 const className_UX_for_AU = 'ux_for_au';
 const className_UX_for_EN = 'ux_for_en';
 const className_trial_button = 'ux_trial';
@@ -60,6 +61,10 @@ function getUserLangByGLwithUX() {
 }
 
 function UXinitialize(){
+  var UX_for_APAC = document.getElementsByClassName(className_UX_for_APAC);
+  for (var i = 0; i < UX_for_APAC.length; i++) {
+    UX_for_APAC[i].style.display = 'none';
+  }
   var UX_for_AU = document.getElementsByClassName(className_UX_for_AU);
   for (var i = 0; i < UX_for_AU.length; i++) {
     UX_for_AU[i].style.display = 'none';
@@ -71,14 +76,27 @@ function UXinitialize(){
 }
 
 function UXcustomizeViaCountry(){
+  var UX_for_APAC = document.getElementsByClassName(className_UX_for_APAC);
+  for (var i = 0; i < UX_for_APAC.length; i++) {
+    switch (global_prf_country) {
+      case 'EN_AU':
+      case 'en-AU':
+      case 'AU':
+      case 'NZ':
+      case 'SG':
+      case 'MY':
+        UX_for_APAC[i].style.display = 'inline';
+        break;
+      default:
+        UX_for_APAC[i].style.display = 'none';
+    }
+  }
   var UX_for_AU = document.getElementsByClassName(className_UX_for_AU);
   for (var i = 0; i < UX_for_AU.length; i++) {
     switch (global_prf_country) {
       case 'EN_AU':
       case 'en-AU':
       case 'AU':
-      case 'SG':
-      case 'MY':
         UX_for_AU[i].style.display = 'inline';
         break;
       default:
