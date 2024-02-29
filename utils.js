@@ -1,7 +1,7 @@
-// ovice utils build 025 by Tok@ovice, 2024 
+// ovice utils build 026 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
-var global_prf_country = 'en';
+var global_prf_country = 'none';
 var global_btn_position = '';
 var global_flg_ctype = {none:0,QP:1,LS:2,GL:3,XX:9};
 var global_flg_c = global_flg_ctype.none;
@@ -115,6 +115,7 @@ function UXcustomizeViaCountry(){
       case 'EN':
       case 'en':
       case 'US':
+      case 'none':
         UX_for_EN[i].style.display = 'inline';
         break;
     }
