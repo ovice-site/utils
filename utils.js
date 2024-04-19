@@ -1,4 +1,4 @@
-// ovice utils build 026 by Tok@ovice, 2024 
+// ovice utils build 027 by Tok@ovice, 2024 
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -204,6 +204,13 @@ function checkAttribution(d) {
   return 'other_' + u.host;
 }
 
+function secdomain(p) {
+  var u = new URL(p).hostname;
+  var s = u.split('.');
+  var l = s.length;
+  return s[l-2] + '.' + s[l-1];
+}
+
 (function(){
   var str = retrieveGETqs();
   global_prm = str ? decodeURIComponent(str) : '';
@@ -259,7 +266,14 @@ function checkAttribution(d) {
     var ls = localStorage;
     var ss = sessionStorage;
     var r = document.referrer;
-    if (r === '') {r = 'direct';}
+    var ft = false;
+    if (r === '') {
+      r = 'direct';
+    } else {
+      var rd = secdomain(r);
+      var cd = secdomain(location.origin);
+      if (rd === cd) {tr = true;}
+    }
     ls.setItem('ovicecom_cPages', Number(ls.getItem('ovicecom_cPages')) + 1);
     if(ss.getItem('ovicecom_fEntry') === null) {
       ss.setItem('ovicecom_fEntry', 1);
@@ -268,7 +282,7 @@ function checkAttribution(d) {
       if (v === 0) {
         ls.setItem('ovicecom_sFirstRef', r);
       }
-      ls.setItem('ovicecom_sLastRef', r);
+      if (ft === false) {ls.setItem('ovicecom_sLastRef', r);}
       var t = new Date();
       ls.setItem('ovicecom_nLastTime', t.getTime());
     }
