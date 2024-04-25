@@ -1,4 +1,5 @@
 // ovice utils build 027 by Tok@ovice, 2024 
+var global_utils = 27;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -267,33 +268,45 @@ function secdomain(p) {
     var ss = sessionStorage;
     var r = document.referrer;
     var ft = false;
+    if (ls.getItem('ovicecom_utils') == null) {ls.setItem('ovicecom_utils', global_utils);}
+    if(ss.getItem('ovicecom_fEntry') === '99') {
+      console.log('ovicecom utils: reset');
+      ss.removeItem('ovicecom_fEntry');
+      ls.removeItem('ovicecom_utils');
+      ls.removeItem('ovicecom_countrycode');
+      ls.removeItem('ovicecom_cPages');
+      ls.removeItem('ovicecom_cVisits');
+      ls.removeItem('ovicecom_sFirstRef');
+      ls.removeItem('ovicecom_attribution');
+      return;
+    }
     if (r === '') {
       r = 'direct';
     } else {
       var rd = secdomain(r);
       var cd = secdomain(location.origin);
-      if (rd === cd) {tr = true;}
+      if (rd === cd) {ft = true;}
     }
-    ls.setItem('ovicecom_cPages', Number(ls.getItem('ovicecom_cPages')) + 1);
-    if(ss.getItem('ovicecom_fEntry') === null) {
+    if((ss.getItem('ovicecom_fEntry') === null) && (ft === false)) {
       ss.setItem('ovicecom_fEntry', 1);
+      if (global_prm === '') {
+        ls.setItem('ovicecom_sLastRef', (r === 'direct' ? r : checkAttribution(r)));
+      } else {
+        var p = global_prm_val.get('source');
+        if (p !== null) {
+          ls.setItem('ovicecom_sLastRef', p);
+        }
+      }
       var v = Number(ls.getItem('ovicecom_cVisits'));
       ls.setItem('ovicecom_cVisits', v + 1);
       if (v === 0) {
         ls.setItem('ovicecom_sFirstRef', r);
       }
-      if (ft === false) {ls.setItem('ovicecom_sLastRef', r);}
-      var t = new Date();
-      ls.setItem('ovicecom_nLastTime', t.getTime());
     }
-    if (global_prm === '') {
-      ls.setItem('ovicecom_attribution', (r === 'direct' ? r : checkAttribution(r)));
-    } else {
-      var p = global_prm_val.get('source');
-      if (p !== null) {
-        ls.setItem('ovicecom_attribution', p);
-      }
-    }
+    var t = new Date();
+    ls.setItem('ovicecom_nLastTime', t.getTime());
+    ls.setItem('ovicecom_cPages', Number(ls.getItem('ovicecom_cPages')) + 1);
+    ls.setItem('ovicecom_attribution', ls.getItem('ovicecom_sLastRef'));
   }
 })();
 
@@ -310,20 +323,6 @@ $(function(){
     var target_url = $(this).attr('href');
     if (!target_url.startsWith('#') && !target_url.startsWith('?') && !target_url.includes('countrycode')) {
       if (global_flg_c == global_flg_ctype.GL || global_flg_c == global_flg_ctype.LS) {
-
-        var at = '';
-        if(typeof localStorage !== 'undefined') {
-          var s = localStorage;
-          if (s.getItem('ovicecom_attribution')) {
-            at = s.getItem('ovicecom_attribution');
-          }
-        }
-
-//        if (global_prm && !global_prm.includes('countrycode')) {
-//          global_prm = global_prm + '&countrycode=' + global_prf_country + ((at !== '') ? ('&attribution=' + at) : '');
-//        } else {
-//          global_prm = 'countrycode=' + global_prf_country + ((at !== '') ? ('&attribution=' + at) : '');
-//        }
         if (global_prm && !global_prm.includes('countrycode')) {
           global_prm = global_prm + '&countrycode=' + global_prf_country;
         } else {
@@ -335,6 +334,16 @@ $(function(){
           var p = window.location.pathname;
           var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
           global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
+        }
+        if (target_url.includes('trial-form') || target_url.includes('go.ovice.com')) {
+          var at = '';
+          if(typeof localStorage !== 'undefined') {
+            var s = localStorage;
+            if (s.getItem('ovicecom_attribution')) {
+              at = 'mp=' + s.getItem('ovicecom_cPages') + '&mv=' + s.getItem('ovicecom_cVisits') + '&mf=' + s.getItem('ovicecom_sFirstRef') + '&ms=' + s.getItem('ovicecom_attribution');
+              global_prm = global_prm + '&' + at;
+            }
+          }
         }
         if (target_url.indexOf('?') != -1) {
           $(this).attr('href', target_url + '&' + global_prm);
