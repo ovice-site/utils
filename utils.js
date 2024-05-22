@@ -145,6 +145,8 @@ function UXcustomizeViaCountry(){
 
 function checkAttribution(d) {
   const refdata = `[
+    {"domain": "ovice.", "ref": "ref_ovart"},
+    {"domain": "flexergylab.com", "ref": "ref_flart"},
     {"domain": "play.google.com", "ref": "aso_gosea"},
     {"domain": "apps.apple.com", "ref": "aso_apsea"},
     {"domain": "google.", "ref": "seo_gosea"},
@@ -171,7 +173,7 @@ function checkAttribution(d) {
     {"domain": "x.com", "ref": "soc_xpos"},
     {"domain": "linkedin.com", "ref": "soc_lipos"},
     {"domain": "youtube.com", "ref": "soc_yopos"},
-    {"domain": "instagram.com", "ref": "ref_otart"},
+    {"domain": "instagram.com", "ref": "soc_inpos"},
     {"domain": "www.itreview.jp", "ref": "ref_itart"},
     {"domain": "prtimes.jp", "ref": "ref_prart"},
     {"domain": "boxil.jp", "ref": "ref_otart"},
@@ -195,11 +197,12 @@ function checkAttribution(d) {
     {"domain": "panora.tokyo", "ref": "ref_otart"},
     {"domain": "notion.site", "ref": "ref_otart"}
   ]`;
+  ]`;
   var j = JSON.parse(refdata);
   for (var i = 0; i < j.length; i++) {
     if (d.indexOf(j[i].domain) > -1) {return j[i].ref;}
   }
-  const u = new URL(d);
+//  const u = new URL(d);
 //  return 'other_' + u.host;
   return 'ref_otart';
 }
