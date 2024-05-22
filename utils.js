@@ -270,7 +270,8 @@ function secdomain(p) {
     var ss = sessionStorage;
     var r = document.referrer;
     var ft = false;
-    if (ls.getItem('ovicecom_utils') == null) {ls.setItem('ovicecom_utils', global_utils);}
+    var u = ls.getItem('ovicecom_utils');
+    if ((u == null) || Number(u) < global_utils) {ls.setItem('ovicecom_utils', global_utils);}
     if(ss.getItem('ovicecom_fEntry') === '99') {
       console.log('ovicecom utils: reset');
       ss.removeItem('ovicecom_fEntry');
