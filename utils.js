@@ -1,5 +1,5 @@
-// ovice utils build 028 by Tok@ovice, 2024 
-var global_utils = 28;
+// ovice utils build 029 by Tok@ovice, 2024 
+var global_utils = 29;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -176,6 +176,7 @@ function checkAttribution(d) {
     {"domain": "instagram.com", "ref": "soc_inpos"},
     {"domain": "www.itreview.jp", "ref": "ref_itart"},
     {"domain": "prtimes.jp", "ref": "ref_prart"},
+    {"domain": "peatix.com", "ref": "ref_peart"},
     {"domain": "boxil.jp", "ref": "ref_otart"},
     {"domain": "it-trend.jp", "ref": "ref_otart"},
     {"domain": "capterra.jp", "ref": "ref_otart"},
