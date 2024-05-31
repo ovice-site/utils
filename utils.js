@@ -198,7 +198,6 @@ function checkAttribution(d) {
     {"domain": "panora.tokyo", "ref": "ref_otart"},
     {"domain": "notion.site", "ref": "ref_otart"}
   ]`;
-  ]`;
   var j = JSON.parse(refdata);
   for (var i = 0; i < j.length; i++) {
     if (d.indexOf(j[i].domain) > -1) {return j[i].ref;}
