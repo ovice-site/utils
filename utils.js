@@ -1,5 +1,5 @@
-// ovice utils build 029 by Tok@ovice, 2024 
-var global_utils = 29;
+// ovice utils build 030 by Tok@ovice, 2024 
+var global_utils = 30;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -339,12 +339,17 @@ $(function(){
           var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
           global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
         }
-        if (target_url.includes('trial-form') || target_url.includes('go.ovice.com')) {
-          var at = '';
-          if(typeof localStorage !== 'undefined') {
-            var s = localStorage;
+        var at = '';
+        if(typeof localStorage !== 'undefined') {
+          var s = localStorage;
+          if (target_url.includes('trial-form')) {
             if (s.getItem('ovicecom_attribution')) {
               at = 'mp=' + s.getItem('ovicecom_cPages') + '&mv=' + s.getItem('ovicecom_cVisits') + '&mf=' + s.getItem('ovicecom_sFirstRef') + '&ms=' + s.getItem('ovicecom_attribution');
+              global_prm = global_prm + '&' + at;
+            }
+          } else if (target_url.includes('go.ovice.com')) {
+            if (s.getItem('ovicecom_attribution')) {
+              at = 'mark_pages=' + s.getItem('ovicecom_cPages') + '&mark_visits=' + s.getItem('ovicecom_cVisits') + '&mark_first=' + s.getItem('ovicecom_sFirstRef') + '&mark_source=' + s.getItem('ovicecom_attribution');
               global_prm = global_prm + '&' + at;
             }
           }
