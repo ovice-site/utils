@@ -1,5 +1,5 @@
-// ovice utils build 030 by Tok@ovice, 2024 
-var global_utils = 30;
+// ovice utils build 031 by Tok@ovice, 2024 
+var global_utils = 31;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -145,58 +145,61 @@ function UXcustomizeViaCountry(){
 
 function checkAttribution(d) {
   const refdata = `[
-    {"domain": "ovice.", "ref": "ref_ovart"},
-    {"domain": "flexergylab.com", "ref": "ref_flart"},
-    {"domain": "play.google.com", "ref": "aso_gosea"},
-    {"domain": "apps.apple.com", "ref": "aso_apsea"},
-    {"domain": "google.", "ref": "seo_gosea"},
-    {"domain": "yahoo.co.jp", "ref": "seo_yasea"}, 
-    {"domain": "yahoo.com", "ref": "seo_yasea"}, 
-    {"domain": "bing.com", "ref": "seo_misea"},
-    {"domain": "duckduckgo.com", "ref": "seo_otsea"},
-    {"domain": "coccoc.com", "ref": "seo_otsea"},
-    {"domain": "yandex.com", "ref": "seo_otsea"},
-    {"domain": "naver.com", "ref": "seo_otsea"},
-    {"domain": "baidu.com", "ref": "seo_otsea"},
-    {"domain": "ecosia.org", "ref": "seo_otsea"},
-    {"domain": "msn.com", "ref": "seo_otsea"},
-    {"domain": "excite.co.jp", "ref": "seo_otsea"},
-    {"domain": "goo.ne.jp", "ref": "seo_otsea"},
-    {"domain": "livedoor.com", "ref": "seo_otsea"},
-    {"domain": "biglobe.ne.jp", "ref": "seo_otsea"},
-    {"domain": "ocn.ne.jp", "ref": "seo_otsea"},
-    {"domain": "nifty.com", "ref": "seo_otsea"},
-    {"domain": "infoseek.co.jp", "ref": "seo_otsea"},
-    {"domain": "auone.jp", "ref": "seo_otsea"},
-    {"domain": "docomo.ne.jp", "ref": "seo_otsea"},
-    {"domain": "facebook.com", "ref": "soc_fapos"},
-    {"domain": "x.com", "ref": "soc_xpos"},
-    {"domain": "linkedin.com", "ref": "soc_lipos"},
-    {"domain": "youtube.com", "ref": "soc_yopos"},
-    {"domain": "instagram.com", "ref": "soc_inpos"},
-    {"domain": "www.itreview.jp", "ref": "ref_itart"},
-    {"domain": "prtimes.jp", "ref": "ref_prart"},
-    {"domain": "peatix.com", "ref": "ref_peart"},
-    {"domain": "boxil.jp", "ref": "ref_otart"},
-    {"domain": "it-trend.jp", "ref": "ref_otart"},
-    {"domain": "capterra.jp", "ref": "ref_otart"},
-    {"domain": "capterra.com", "ref": "ref_otart"},
-    {"domain": "g2.com", "ref": "ref_otart"},
-    {"domain": "getapp.com", "ref": "ref_otart"},
-    {"domain": "wantedly.com", "ref": "ref_otart"},
-    {"domain": "techable.jp", "ref": "ref_otart"},
-    {"domain": "zendesk.com", "ref": "ref_otart"},
-    {"domain": "patentsalon.com", "ref": "ref_otart"},
-    {"domain": "note.com", "ref": "ref_otart"},
-    {"domain": "connpas.com", "ref": "ref_otart"},
-    {"domain": "voice-ping.com", "ref": "ref_otart"},
-    {"domain": "toremaga.com", "ref": "ref_otart"},
-    {"domain": "wmr.tokyo", "ref": "ref_otart"},
-    {"domain": "zdnet.com", "ref": "ref_otart"},
-    {"domain": "cnet.com", "ref": "ref_otart"},
-    {"domain": "impress.co.jp", "ref": "ref_otart"},
-    {"domain": "panora.tokyo", "ref": "ref_otart"},
-    {"domain": "notion.site", "ref": "ref_otart"}
+    {"domain": ovice.com/blog", "ref": own_bl_art"},
+    {"domain": ovice.com/ja/blog", "ref": own_bl_art"},
+    {"domain": ovice.com/ko/blog", "ref": own_bl_art"},
+    {"domain": google.", "ref": seo_go_sea"},
+    {"domain": yahoo.co.jp", "ref": seo_ya_sea"},
+    {"domain": yahoo.com", "ref": seo_ya_sea"},
+    {"domain": bing.com", "ref": seo_mi_sea"},
+    {"domain": duckduckgo.com", "ref": seo_ot_sea"},
+    {"domain": coccoc.com", "ref": seo_ot_sea"},
+    {"domain": yandex.com", "ref": seo_ot_sea"},
+    {"domain": naver.com", "ref": seo_ot_sea"},
+    {"domain": baidu.com", "ref": seo_ot_sea"},
+    {"domain": ecosia.org", "ref": seo_ot_sea"},
+    {"domain": msn.com", "ref": seo_ot_sea"},
+    {"domain": excite.co.jp", "ref": seo_ot_sea"},
+    {"domain": goo.ne.jp", "ref": seo_ot_sea"},
+    {"domain": livedoor.com", "ref": seo_ot_sea"},
+    {"domain": biglobe.ne.jp", "ref": seo_ot_sea"},
+    {"domain": ocn.ne.jp", "ref": seo_ot_sea"},
+    {"domain": nifty.com", "ref": seo_ot_sea"},
+    {"domain": infoseek.co.jp", "ref": seo_ot_sea"},
+    {"domain": auone.jp", "ref": seo_ot_sea"},
+    {"domain": docomo.ne.jp", "ref": seo_ot_sea"},
+    {"domain": play.google.com", "ref": aso_go_sea"},
+    {"domain": apps.apple.com", "ref": aso_ap_sea"},
+    {"domain": ovice.", "ref": ref_ov_art"},
+    {"domain": flexergylab.com", "ref": ref_fl_art"},
+    {"domain": www.itreview.jp", "ref": ref_it_art"},
+    {"domain": prtimes.jp", "ref": ref_pr_art"},
+    {"domain": peatix.com", "ref": ref_pe_art"},
+    {"domain": boxil.jp", "ref": aso_ot_sea"},
+    {"domain": it-trend.jp", "ref": ref_ov_art"},
+    {"domain": capterra.jp", "ref": ref_fl_art"},
+    {"domain": capterra.com", "ref": ref_it_art"},
+    {"domain": g2.com", "ref": ref_pr_art"},
+    {"domain": getapp.com", "ref": ref_pe_art"},
+    {"domain": wantedly.com", "ref": ref_ot_art"},
+    {"domain": techable.jp", "ref": ref_ot_art"},
+    {"domain": zendesk.com", "ref": ref_ot_art"},
+    {"domain": patentsalon.com", "ref": ref_ot_art"},
+    {"domain": note.com", "ref": ref_ot_art"},
+    {"domain": connpas.com", "ref": ref_ot_art"},
+    {"domain": voice-ping.com", "ref": ref_ot_art"},
+    {"domain": toremaga.com", "ref": ref_ot_art"},
+    {"domain": wmr.tokyo", "ref": ref_ot_art"},
+    {"domain": zdnet.com", "ref": ref_ot_art"},
+    {"domain": cnet.com", "ref": ref_ot_art"},
+    {"domain": impress.co.jp", "ref": ref_ot_art"},
+    {"domain": panora.tokyo", "ref": ref_ot_art"},
+    {"domain": notion.site", "ref": ref_ot_art"},
+    {"domain": facebook.com", "ref": soc_fa_pos"},
+    {"domain": x.com", "ref": soc_x_pos"},
+    {"domain": linkedin.com", "ref": soc_ig_pos"},
+    {"domain": youtube.com", "ref": soc_in_pos"},
+    {"domain": instagram.com", "ref": soc_yo_pos"},
   ]`;
   var j = JSON.parse(refdata);
   for (var i = 0; i < j.length; i++) {
@@ -296,6 +299,10 @@ function secdomain(p) {
         ls.setItem('ovicecom_sLastRef', (r === 'direct' ? r : checkAttribution(r)));
       } else {
         var p = global_prm_val.get('source');
+        if (p !== null) {
+          ls.setItem('ovicecom_sLastRef', p);
+        }
+        var p = global_prm_val.get('mark_source');
         if (p !== null) {
           ls.setItem('ovicecom_sLastRef', p);
         }
