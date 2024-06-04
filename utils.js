@@ -1,5 +1,5 @@
-// ovice utils build 027 by Tok@ovice, 2024 
-var global_utils = 27;
+// ovice utils build 031 by Tok@ovice, 2024 
+var global_utils = 31;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -145,64 +145,69 @@ function UXcustomizeViaCountry(){
 
 function checkAttribution(d) {
   const refdata = `[
-    {"domain": "ovice.", "ref": "ovice"},
-    {"domain": "flexergylab.com", "ref": "ovice"},
-    {"domain": "play.google.com", "ref": "aso_google"},
-    {"domain": "apps.apple.com", "ref": "aso_apple"},
-    {"domain": "google.", "ref": "seo_google"},
-    {"domain": "yahoo.co.jp", "ref": "seo_yahoo"}, 
-    {"domain": "yahoo.com", "ref": "seo_yahoo"}, 
-    {"domain": "bing.com", "ref": "seo_bin"},
-    {"domain": "duckduckgo.com", "ref": "seo_duckduckgo"},
-    {"domain": "coccoc.com", "ref": "seo_coccoc"},
-    {"domain": "yandex.com", "ref": "seo_yandex"},
-    {"domain": "naver.com", "ref": "seo_naver"},
-    {"domain": "baidu.com", "ref": "seo_baidu"},
-    {"domain": "ecosia.org", "ref": "seo_ecosia"},
-    {"domain": "msn.com", "ref": "seo_msn"},
-    {"domain": "excite.co.jp", "ref": "seo_excite"},
-    {"domain": "goo.ne.jp", "ref": "seo_goo"},
-    {"domain": "livedoor.com", "ref": "seo_livedoor"},
-    {"domain": "biglobe.ne.jp", "ref": "seo_biglobe"},
-    {"domain": "ocn.ne.jp", "ref": "seo_ocn"},
-    {"domain": "nifty.com", "ref": "seo_nifty"},
-    {"domain": "infoseek.co.jp", "ref": "seo_infoseek"},
-    {"domain": "auone.jp", "ref": "seo_au"},
-    {"domain": "docomo.ne.jp", "ref": "seo_docomo"},
-    {"domain": "facebook.com", "ref": "social_facebook"},
-    {"domain": "x.com", "ref": "social_x"},
-    {"domain": "linkedin.com", "ref": "social_linkedin"},
-    {"domain": "youtube.com", "ref": "social_youtube"},
-    {"domain": "instagram.com", "ref": "social_instagram"},
-    {"domain": "www.itreview.jp", "ref": "review_itreview"},
-    {"domain": "boxil.jp", "ref": "review_boxil"},
-    {"domain": "it-trend.jp", "ref": "review_it-trend"},
-    {"domain": "capterra.jp", "ref": "review_capterra"},
-    {"domain": "capterra.com", "ref": "review_capterra"},
-    {"domain": "g2.com", "ref": "review_g2"},
-    {"domain": "getapp.com", "ref": "review_getapp"},
-    {"domain": "prtimes.jp", "ref": "media_prtimes"},
-    {"domain": "wantedly.com", "ref": "media_wantedly"},
-    {"domain": "techable.jp", "ref": "media_techable"},
-    {"domain": "zendesk.com", "ref": "media_zendesk"},
-    {"domain": "patentsalon.com", "ref": "media_patentsalon"},
-    {"domain": "note.com", "ref": "media_note"},
-    {"domain": "connpas.com", "ref": "media_connpas"},
-    {"domain": "voice-ping.com", "ref": "media_voice-ping"},
-    {"domain": "toremaga.com", "ref": "media_toremaga"},
-    {"domain": "wmr.tokyo", "ref": "media_wmr-tokyo"},
-    {"domain": "zdnet.com", "ref": "media_zdnet"},
-    {"domain": "cnet.com", "ref": "media_cnet"},
-    {"domain": "impress.co.jp", "ref": "media_impress"},
-    {"domain": "panora.tokyo", "ref": "media_panora-tokyo"},
-    {"domain": "notion.site", "ref": "media_notion"}
+    {"domain": ovice.com/blog", "ref": own_bl_art"},
+    {"domain": ovice.com/ja/blog", "ref": own_bl_art"},
+    {"domain": ovice.com/ko/blog", "ref": own_bl_art"},
+    {"domain": google.", "ref": seo_go_sea"},
+    {"domain": yahoo.co.jp", "ref": seo_ya_sea"},
+    {"domain": yahoo.com", "ref": seo_ya_sea"},
+    {"domain": bing.com", "ref": seo_mi_sea"},
+    {"domain": duckduckgo.com", "ref": seo_ot_sea"},
+    {"domain": coccoc.com", "ref": seo_ot_sea"},
+    {"domain": yandex.com", "ref": seo_ot_sea"},
+    {"domain": naver.com", "ref": seo_ot_sea"},
+    {"domain": baidu.com", "ref": seo_ot_sea"},
+    {"domain": ecosia.org", "ref": seo_ot_sea"},
+    {"domain": msn.com", "ref": seo_ot_sea"},
+    {"domain": excite.co.jp", "ref": seo_ot_sea"},
+    {"domain": goo.ne.jp", "ref": seo_ot_sea"},
+    {"domain": livedoor.com", "ref": seo_ot_sea"},
+    {"domain": biglobe.ne.jp", "ref": seo_ot_sea"},
+    {"domain": ocn.ne.jp", "ref": seo_ot_sea"},
+    {"domain": nifty.com", "ref": seo_ot_sea"},
+    {"domain": infoseek.co.jp", "ref": seo_ot_sea"},
+    {"domain": auone.jp", "ref": seo_ot_sea"},
+    {"domain": docomo.ne.jp", "ref": seo_ot_sea"},
+    {"domain": play.google.com", "ref": aso_go_sea"},
+    {"domain": apps.apple.com", "ref": aso_ap_sea"},
+    {"domain": ovice.", "ref": ref_ov_art"},
+    {"domain": flexergylab.com", "ref": ref_fl_art"},
+    {"domain": www.itreview.jp", "ref": ref_it_art"},
+    {"domain": prtimes.jp", "ref": ref_pr_art"},
+    {"domain": peatix.com", "ref": ref_pe_art"},
+    {"domain": boxil.jp", "ref": aso_ot_sea"},
+    {"domain": it-trend.jp", "ref": ref_ov_art"},
+    {"domain": capterra.jp", "ref": ref_fl_art"},
+    {"domain": capterra.com", "ref": ref_it_art"},
+    {"domain": g2.com", "ref": ref_pr_art"},
+    {"domain": getapp.com", "ref": ref_pe_art"},
+    {"domain": wantedly.com", "ref": ref_ot_art"},
+    {"domain": techable.jp", "ref": ref_ot_art"},
+    {"domain": zendesk.com", "ref": ref_ot_art"},
+    {"domain": patentsalon.com", "ref": ref_ot_art"},
+    {"domain": note.com", "ref": ref_ot_art"},
+    {"domain": connpas.com", "ref": ref_ot_art"},
+    {"domain": voice-ping.com", "ref": ref_ot_art"},
+    {"domain": toremaga.com", "ref": ref_ot_art"},
+    {"domain": wmr.tokyo", "ref": ref_ot_art"},
+    {"domain": zdnet.com", "ref": ref_ot_art"},
+    {"domain": cnet.com", "ref": ref_ot_art"},
+    {"domain": impress.co.jp", "ref": ref_ot_art"},
+    {"domain": panora.tokyo", "ref": ref_ot_art"},
+    {"domain": notion.site", "ref": ref_ot_art"},
+    {"domain": facebook.com", "ref": soc_fa_pos"},
+    {"domain": x.com", "ref": soc_x_pos"},
+    {"domain": linkedin.com", "ref": soc_ig_pos"},
+    {"domain": youtube.com", "ref": soc_in_pos"},
+    {"domain": instagram.com", "ref": soc_yo_pos"},
   ]`;
   var j = JSON.parse(refdata);
   for (var i = 0; i < j.length; i++) {
     if (d.indexOf(j[i].domain) > -1) {return j[i].ref;}
   }
-  const u = new URL(d);
-  return 'other_' + u.host;
+//  const u = new URL(d);
+//  return 'other_' + u.host;
+  return 'ref_otart';
 }
 
 function secdomain(p) {
@@ -268,7 +273,8 @@ function secdomain(p) {
     var ss = sessionStorage;
     var r = document.referrer;
     var ft = false;
-    if (ls.getItem('ovicecom_utils') == null) {ls.setItem('ovicecom_utils', global_utils);}
+    var u = ls.getItem('ovicecom_utils');
+    if ((u == null) || Number(u) < global_utils) {ls.setItem('ovicecom_utils', global_utils);}
     if(ss.getItem('ovicecom_fEntry') === '99') {
       console.log('ovicecom utils: reset');
       ss.removeItem('ovicecom_fEntry');
@@ -293,6 +299,10 @@ function secdomain(p) {
         ls.setItem('ovicecom_sLastRef', (r === 'direct' ? r : checkAttribution(r)));
       } else {
         var p = global_prm_val.get('source');
+        if (p !== null) {
+          ls.setItem('ovicecom_sLastRef', p);
+        }
+        var p = global_prm_val.get('mark_source');
         if (p !== null) {
           ls.setItem('ovicecom_sLastRef', p);
         }
@@ -335,12 +345,17 @@ $(function(){
           var c = p.startsWith('/ja') ? 'jp' : (p.startsWith('/ko') ? 'ko' : 'en');
           global_prm = global_prm + '&lp_type=' + c + '_official_' + window.location.pathname.substring(1) + '_' + global_btn_position;
         }
-        if (target_url.includes('trial-form') || target_url.includes('go.ovice.com')) {
-          var at = '';
-          if(typeof localStorage !== 'undefined') {
-            var s = localStorage;
+        var at = '';
+        if(typeof localStorage !== 'undefined') {
+          var s = localStorage;
+          if (target_url.includes('trial-form')) {
             if (s.getItem('ovicecom_attribution')) {
               at = 'mp=' + s.getItem('ovicecom_cPages') + '&mv=' + s.getItem('ovicecom_cVisits') + '&mf=' + s.getItem('ovicecom_sFirstRef') + '&ms=' + s.getItem('ovicecom_attribution');
+              global_prm = global_prm + '&' + at;
+            }
+          } else if (target_url.includes('go.ovice.com')) {
+            if (s.getItem('ovicecom_attribution')) {
+              at = 'mark_pages=' + s.getItem('ovicecom_cPages') + '&mark_visits=' + s.getItem('ovicecom_cVisits') + '&mark_first=' + s.getItem('ovicecom_sFirstRef') + '&mark_source=' + s.getItem('ovicecom_attribution');
               global_prm = global_prm + '&' + at;
             }
           }
