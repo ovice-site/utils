@@ -208,9 +208,7 @@ function checkAttribution(d) {
   for (var i = 0; i < j.length; i++) {
     if (d.indexOf(j[i].domain) > -1) {return j[i].ref;}
   }
-//  const u = new URL(d);
-//  return 'other_' + u.host;
-  return 'ref_otart';
+  return 'ref_ot_art';
 }
 
 function secdomain(p) {
@@ -286,6 +284,7 @@ function secdomain(p) {
       ls.removeItem('ovicecom_cPages');
       ls.removeItem('ovicecom_cVisits');
       ls.removeItem('ovicecom_sFirstRef');
+      ls.removeItem('ovicecom_sLastRef');
       ls.removeItem('ovicecom_attribution');
       return;
     }
