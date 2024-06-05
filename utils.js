@@ -1,5 +1,5 @@
-// ovice utils build 031 by Tok@ovice, 2024 
-var global_utils = 31;
+// ovice utils build 032 by Tok@ovice, 2024 
+var global_utils = 32;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -13,6 +13,7 @@ const className_UX_for_JA = 'ux_for_ja';
 const className_UX_for_KO = 'ux_for_ko';
 const className_trial_button = 'ux_trial';
 const className_freeplan_button = 'ux_freeplan';
+const msuid_direct = 'dir_na_non';
 
 function retrieveGETqs() {
   var query = window.location.search.substring(1);
@@ -287,7 +288,7 @@ function secdomain(p) {
       return;
     }
     if (r === '') {
-      r = 'direct';
+      r = msuid_direct;
     } else {
       var rd = secdomain(r);
       var cd = secdomain(location.origin);
@@ -296,7 +297,7 @@ function secdomain(p) {
     if((ss.getItem('ovicecom_fEntry') === null) && (ft === false)) {
       ss.setItem('ovicecom_fEntry', 1);
       if (global_prm === '') {
-        ls.setItem('ovicecom_sLastRef', (r === 'direct' ? r : checkAttribution(r)));
+        ls.setItem('ovicecom_sLastRef', (r === msuid_direct ? r : checkAttribution(r)));
       } else {
         var p = global_prm_val.get('source');
         if (p !== null) {
