@@ -300,19 +300,15 @@ function secdomain(p) {
       var v = Number(ls.getItem('ovicecom_cVisits'));
       ls.setItem('ovicecom_cVisits', v + 1);
       if (v === 0) {
-        ls.setItem('ovicecom_sFirstRef', r);
+        ls.setItem('ovicecom_sFirstRef', checkAttribution(r));
       }
-      if (global_prm === '') {
-        ls.setItem('ovicecom_sLastRef', (r === msuid_direct ? r : checkAttribution(r)));
+      var p;
+      if ((p = global_prm_val.get('source')) !== null) {
+        ls.setItem('ovicecom_sLastRef', p);
+      } else if ((p = global_prm_val.get('mark_source')) !== null) {
+        ls.setItem('ovicecom_sLastRef', p);
       } else {
-        var p = global_prm_val.get('source');
-        if (p !== null) {
-          ls.setItem('ovicecom_sLastRef', p);
-        }
-        var p = global_prm_val.get('mark_source');
-        if (p !== null) {
-          ls.setItem('ovicecom_sLastRef', p);
-        }
+        ls.setItem('ovicecom_sLastRef', (r === msuid_direct ? r : checkAttribution(r)));
       }
     }
     var t = new Date();
