@@ -202,7 +202,7 @@ function checkAttribution(d) {
     {"domain": "x.com", "ref": "soc_x_pos"},
     {"domain": "linkedin.com", "ref": "soc_ig_pos"},
     {"domain": "youtube.com", "ref": "soc_in_pos"},
-    {"domain": "instagram.com", "ref": "soc_yo_pos"},
+    {"domain": "instagram.com", "ref": "soc_yo_pos"}
   ]`;
   var j = JSON.parse(refdata);
   for (var i = 0; i < j.length; i++) {
@@ -297,6 +297,11 @@ function secdomain(p) {
     }
     if((ss.getItem('ovicecom_fEntry') === null) && (ft === false)) {
       ss.setItem('ovicecom_fEntry', 1);
+      var v = Number(ls.getItem('ovicecom_cVisits'));
+      ls.setItem('ovicecom_cVisits', v + 1);
+      if (v === 0) {
+        ls.setItem('ovicecom_sFirstRef', r);
+      }
       if (global_prm === '') {
         ls.setItem('ovicecom_sLastRef', (r === msuid_direct ? r : checkAttribution(r)));
       } else {
@@ -308,11 +313,6 @@ function secdomain(p) {
         if (p !== null) {
           ls.setItem('ovicecom_sLastRef', p);
         }
-      }
-      var v = Number(ls.getItem('ovicecom_cVisits'));
-      ls.setItem('ovicecom_cVisits', v + 1);
-      if (v === 0) {
-        ls.setItem('ovicecom_sFirstRef', r);
       }
     }
     var t = new Date();
