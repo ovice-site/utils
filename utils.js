@@ -1,5 +1,5 @@
-// ovice utils build 033 by Tok@ovice, 2024 
-var global_utils = 33;
+// ovice utils build 034 by Tok@ovice, 2024 
+var global_utils = 34;
 var global_prm;
 var global_prm_val;
 var global_prf_country = 'none';
@@ -146,9 +146,6 @@ function UXcustomizeViaCountry(){
 
 function checkAttribution(d) {
   const refdata = `[
-    {"domain": "ovice.com/blog", "ref": "own_bl_art"},
-    {"domain": "ovice.com/ja/blog", "ref": "own_bl_art"},
-    {"domain": "ovice.com/ko/blog", "ref": "own_bl_art"},
     {"domain": "google.", "ref": "seo_go_sea"},
     {"domain": "yahoo.co.jp", "ref": "seo_ya_sea"},
     {"domain": "yahoo.com", "ref": "seo_ya_sea"},
@@ -171,6 +168,7 @@ function checkAttribution(d) {
     {"domain": "docomo.ne.jp", "ref": "seo_ot_sea"},
     {"domain": "play.google.com", "ref": "aso_go_sea"},
     {"domain": "apps.apple.com", "ref": "aso_ap_sea"},
+    {"domain": "note.com", "ref": "own_bl_art"},
     {"domain": "ovice.", "ref": "ref_ov_art"},
     {"domain": "flexergylab.com", "ref": "ref_fl_art"},
     {"domain": "www.itreview.jp", "ref": "ref_it_art"},
@@ -186,7 +184,6 @@ function checkAttribution(d) {
     {"domain": "techable.jp", "ref": "ref_ot_art"},
     {"domain": "zendesk.com", "ref": "ref_ot_art"},
     {"domain": "patentsalon.com", "ref": "ref_ot_art"},
-    {"domain": "note.com", "ref": "ref_ot_art"},
     {"domain": "connpas.com", "ref": "ref_ot_art"},
     {"domain": "voice-ping.com", "ref": "ref_ot_art"},
     {"domain": "toremaga.com", "ref": "ref_ot_art"},
