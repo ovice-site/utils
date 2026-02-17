@@ -1,5 +1,5 @@
-// ovice utils build 035 by Tok@ovice, 2026
-var global_utils = 35;
+// ovice utils build 036 by Tok@ovice, 2026
+var global_utils = 36;
 var global_prm;
 var global_prm_val;
 const msuid_direct = 'dir_na_non';
@@ -141,31 +141,37 @@ $(function(){
   $('a').click(function() {
     var target_url = $(this).attr('href');
     if (!target_url.startsWith('#') && !target_url.startsWith('?')) {
-      if (global_prm) {
-        var at = '';
-        var p = false;
-        if(typeof localStorage !== 'undefined') {
-          var s = localStorage;
-          if (target_url.includes(url_form_trial)) {
-            if (s.getItem('ovicecom_attribution')) {
-              at = 'mp=' + s.getItem('ovicecom_cPages') + '&mv=' + s.getItem('ovicecom_cVisits') + '&mf=' + s.getItem('ovicecom_sFirstRef') + '&ms=' + s.getItem('ovicecom_attribution');
+      var at = '';
+      var p = false;
+      if(typeof localStorage !== 'undefined') {
+        var s = localStorage;
+        if (target_url.includes(url_form_trial)) {
+          if (s.getItem('ovicecom_attribution')) {
+            at = 'mp=' + s.getItem('ovicecom_cPages') + '&mv=' + s.getItem('ovicecom_cVisits') + '&mf=' + s.getItem('ovicecom_sFirstRef') + '&ms=' + s.getItem('ovicecom_attribution');
+            if (global_prm) {
               global_prm = global_prm + '&' + at;
-              p = true;
+            } else {
+              global_prm = at;
             }
-          } else if (target_url.includes(url_form_sf) || target_url.includes(url_form_ovice)) {
-            if (s.getItem('ovicecom_attribution')) {
-              at = 'mark_pages=' + s.getItem('ovicecom_cPages') + '&mark_visits=' + s.getItem('ovicecom_cVisits') + '&mark_first=' + s.getItem('ovicecom_sFirstRef') + '&mark_source=' + s.getItem('ovicecom_attribution');
+            p = true;
+          }
+        } else if (target_url.includes(url_form_sf) || target_url.includes(url_form_ovice)) {
+          if (s.getItem('ovicecom_attribution')) {
+            at = 'mark_pages=' + s.getItem('ovicecom_cPages') + '&mark_visits=' + s.getItem('ovicecom_cVisits') + '&mark_first=' + s.getItem('ovicecom_sFirstRef') + '&mark_source=' + s.getItem('ovicecom_attribution');
+            if (global_prm) {
               global_prm = global_prm + '&' + at;
-              p = true;
+            } else {
+              global_prm = at;
             }
+            p = true;
           }
         }
-        if (p) {
-          if (target_url.indexOf('?') != -1) {
-            $(this).attr('href', target_url + '&' + global_prm);
-          } else {
-            $(this).attr('href', target_url + '?' + global_prm);
-          }
+      }
+      if (p) {
+        if (target_url.indexOf('?') != -1) {
+          $(this).attr('href', target_url + '&' + global_prm);
+        } else {
+          $(this).attr('href', target_url + '?' + global_prm);
         }
       }
     }
